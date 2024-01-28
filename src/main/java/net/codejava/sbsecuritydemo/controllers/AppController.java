@@ -1,13 +1,15 @@
-package net.codejava.sbsecuritydemo.controller;
+package net.codejava.sbsecuritydemo.controllers;
 
-import net.codejava.sbsecuritydemo.entity.User;
-import net.codejava.sbsecuritydemo.repository.UserRepository;
+import net.codejava.sbsecuritydemo.entities.User;
+import net.codejava.sbsecuritydemo.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import java.util.List;
 
 @Controller
 public class AppController {
@@ -21,8 +23,8 @@ public class AppController {
     }
 
     @GetMapping("/register")
-    public String showRegistrationForm(ModelMap model) {
-        model.put("user", new User());
+    public String showRegistrationForm(Model model) {
+        model.addAttribute("user", new User());
 
         return "signup_form";
     }
@@ -37,4 +39,13 @@ public class AppController {
 
         return "register_success";
     }
+
+    @GetMapping("/users")
+    public String listUsers(Model model) {
+        List<User> listUsers = userRepo.findAll();
+        model.addAttribute("listUsers", listUsers);
+
+        return "user_list";
+    }
+
 }

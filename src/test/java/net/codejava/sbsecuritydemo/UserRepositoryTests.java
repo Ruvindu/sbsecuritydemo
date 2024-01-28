@@ -1,7 +1,7 @@
 package net.codejava.sbsecuritydemo;
 
-import net.codejava.sbsecuritydemo.entity.User;
-import net.codejava.sbsecuritydemo.repository.UserRepository;
+import net.codejava.sbsecuritydemo.entities.User;
+import net.codejava.sbsecuritydemo.repositories.UserRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
